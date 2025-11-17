@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route  } from 'react-router'
+import { BrowserRouter as Router, Routes, Route  } from 'react-router';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import Projects from './components/Project';
@@ -13,9 +14,32 @@ import Footer from './components/Footer';
 // import ProjectIndex from '@/pages/projects/Index';
 
 export default function App() {
+
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const sections = ['intro', 'project', 'contact'];
+    const targets = sections.map(section => document.getElementById(section));
+
+    const observer = new IntersectionObserver((entries) => { 
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          console.log(entry.target)
+          console.log(entry.target.id);
+        setActiveSection(entry.target.id)
+        }
+        ;
+      });
+    }, {threshold: 0.3, rootMargin: '0px 0px 0px 0px' });
+
+    targets.forEach(el => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <Navbar />
+      <Navbar activeSection={activeSection} />
       <main className='max-w-4xl mx-auto px-6 sm:px-6 lg:px-16'>
         <Intro />  {/* calling the intro component from the componetns folder */}
         <Projects />
