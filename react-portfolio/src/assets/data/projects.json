@@ -2,18 +2,18 @@
     
     {
         "slug": "blog-platform",
-        "title": "Blog Platform",
-        "description": "A blogging platform to create and share blog posts.",
+        "title": "Maze - UE5",
+        "description": "A game created using UE5 where players navigate through a maze.",
         "screenshots": [
             {
                 "url": "https://picsum.photos/seed/blogplatform/600/400",
-                "caption": "Screenshot of Blog Platform"
+                "caption": "Screenshot of Maze - UE5"
             }
         ],
         "url": "https://example.com/blog-platform",
         "github": "",
         "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "HTML"]
+        "tags": ["Unreal Engine 5", "C++", "Game Development"]
     },
     {
         "slug": "ecommerce-site",

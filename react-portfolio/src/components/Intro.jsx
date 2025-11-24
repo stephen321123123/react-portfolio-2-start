@@ -1,57 +1,52 @@
-export default function Intro(){
-    return(<header id="intro" className="min-h-screen flex items-center">
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-              <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-muted-foreground tracking-wider">PORTFOLIO / 2025</div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Stephen
-                  <br />
-                  <span className="text-muted-foreground">Connolly</span>
-                </h1>
-              </div>
+export default function Intro() {
+  return (
+    <header id="intro" className="min-h-screen flex items-center px-8">
+      <div className="max-w-4xl w-full grid md:grid-cols-3 gap-8">
+        
+        {/* IMAGE */}
+        <div className="flex md:justify-start justify-center">
+          <img
+            src="/src/assets/images/picture.jpg"
+            alt="Profile"
+            className="w-48 h-48 object-cover rounded-lg border border-slate-200"
+          />
+        </div>
 
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Frontend Developer crafting digital experiences at the intersection of
-                  <span className="text-foreground"> design</span>,<span className="text-foreground"> technology</span>, and
-                  <span className="text-foreground"> user experience</span>.
-                </p>
+        {/* MAIN TEXT */}
+        <div className="md:col-span-2 space-y-5">
+          <h1 className="text-5xl tracking-tight font-light">
+            Stephen <br />
+            <span className="text-slate-500">Connolly</span>
+          </h1>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Available for work
-                  </div>
-                  <div>Ireland</div>
-                </div>
-              </div>
+          <p className="text-slate-600 max-w-md">
+            Frontend Developer passionate about merging
+            <span className="text-slate-900"> design</span>,
+            <span className="text-slate-900"> technology</span>, and
+            <span className="text-slate-900"> user experience</span> to build meaningful products.
+          </p>
+
+          <div className="flex flex-wrap gap-4 text-sm text-slate-500">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Available for work
             </div>
+            <div>Ireland</div>
+          </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
-              <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
-                <div className="space-y-2">
-                  <div className="text-foreground">Student</div>
-                  <div className="text-muted-foreground">@ IADT</div>
-                  <div className="text-xs text-muted-foreground">2025 — Present</div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
-                <div className="flex flex-wrap gap-2">
-                  {['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'].map((skill) => (        //loop throught this array 'skill'
-                    <span
-                      key={skill}      //each time make a new span
-                      className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"   //and add this styling
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          <div>
+            <div className="text-xs text-slate-400 mb-1">Focus</div>
+            <div className="flex gap-2 flex-wrap">
+              {["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"].map((skill) => (
+                <span key={skill} className="px-2 py-1 border text-xs rounded border-slate-300">
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
-        </header>);
+        </div>
+
+      </div>
+    </header>
+  );
 }
