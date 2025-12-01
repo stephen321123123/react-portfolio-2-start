@@ -5,7 +5,7 @@ export default function Project() {
   const [projects] = useState(projectsJSON);
 
   return (
-    <section id="project" className="py-20 sm:py-32">
+    <section id="project" className="py-20 sm:py-32 opacity-0">
       <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
         {/* Section header */}
         <div className="space-y-6 sm:space-y-8 lg:col-span-2 text-center lg:text-left">
