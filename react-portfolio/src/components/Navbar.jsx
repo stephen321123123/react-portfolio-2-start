@@ -1,22 +1,43 @@
 export default function Navbar({ activeSection }) {
+  const items = [
+    { id: "intro", label: "Home" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
-    <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-      <div className="flex flex-col gap-4">
-        {['intro', 'project', 'contact'].map((section) => (
-          <button
-            key={section}
-            onClick={() =>
-              document.getElementById(section).scrollIntoView({ behavior: 'smooth' })
-            }
-            className={`w-2 h-8 rounded-full cursor-pointer ${
-              activeSection === section
-                ? 'bg-slate-900'
-                : 'bg-slate-400/30 hover:bg-slate-400/60'
-            }`}
-          >
-            <span className="text-sm ml-4">{section}</span>
-          </button>
-        ))}
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-border bg-background/60">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="font-semibold text-lg">Stephen Connolly</div>
+
+        <div className="flex gap-6 text-sm relative">
+          {items.map((item) => (
+            <button
+              key={item.id}
+              onClick={() =>
+                document.getElementById(item.id)?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className={`relative pb-1 transition ${
+                activeSection === item.id
+                  ? "text-foreground font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+
+              {/* underline */}
+              <span
+                className={`absolute left-0 -bottom-0.5 h-0.5 w-full bg-foreground transition-all duration-300 ${
+                  activeSection === item.id
+                    ? "opacity-100 scale-x-100"
+                    : "opacity-0 scale-x-0"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );

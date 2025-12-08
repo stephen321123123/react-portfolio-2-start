@@ -6,30 +6,30 @@
         "description": "A game created using UE5 where players navigate through a maze.",
         "screenshots": [
             {
-                "url": "https://picsum.photos/seed/blogplatform/600/400",
+                "url": "/public/maze.png",
                 "caption": "Screenshot of Maze - UE5"
             }
         ],
-        "url": "https://example.com/blog-platform",
+        "url": "https://github.com/stephen321123123/CA2",
         "github": "",
         "date": "2025",
         "tags": ["Unreal Engine 5", "C++", "Game Development"]
     },
     {
-        "slug": "ecommerce-site",
-        "title": "E-commerce Site",
-        "description": "An online store for buying and selling products.",
-        "screenshots": [
-            {
-                "url": "https://picsum.photos/seed/ecommercesite/600/400",
-                "caption": "Screenshot of E-commerce Site"
-            }
-        ],
-        "url": "https://example.com/ecommerce-site",
-        "github": "",
-        "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "HTML"]
-    },
+  "slug": "react-countries-site",
+  "title": "React Countries Site",
+  "description": "A React built website that displays information about different countries.",
+  "screenshots": [
+    {
+      "url": "/public/ireland.png",
+      "caption": "Screenshot of Ireland project"
+    }
+  ],
+  "url": "https://restcountriescastephenconnolly.web.app",
+  "github": "",
+  "date": "2025",
+  "tags": ["React", "JavaScript", "CSS", "HTML"]
+},
     {
         "slug": "portfolio-website",
         "title": "Portfolio Website",

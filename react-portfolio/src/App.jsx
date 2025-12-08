@@ -1,80 +1,132 @@
-import { BrowserRouter as Router, Routes, Route  } from 'react-router';
-import { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import Intro from './components/Intro';
-import Projects from './components/Project';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-// pages
-// import Home from './pages/Home';
-// import About from './pages/About';
-// import Contact from './pages/Contact'
-// import PageNotFound from './pages/PageNotFound';
-// import ProjectIndex from '@/pages/projects/Index';
+import Navbar from "./components/Navbar";
+import Intro from "./components/Intro";
+import Projects from "./components/Project";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+
+import ProjectDetails from "./pages/ProjectDetails";
 
 export default function App() {
+  const [activeSection, setActiveSection] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
 
-  const [activeSection, setActiveSection] = useState('');
-  const [isDark, setIsDark] = useState(localStorage.getItem('dark') === 'true');
-
+  /* ---------------------------
+     Theme Handling
+  ---------------------------- */
   useEffect(() => {
-    console.log("Dark Mode:", isDark);
-    document.documentElement.classList.toggle('dark', isDark);
+    const root = document.documentElement;
 
-    localStorage.setItem('dark', isDark);
-  }, [isDark]);
+    if (theme === "system") {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      root.classList.toggle("dark", prefersDark);
+    } else {
+      root.classList.toggle("dark", theme === "dark");
+    }
 
-  useEffect(() => {
-    const sections = ['intro', 'project', 'contact'];
-    const targets = sections.map(section => document.getElementById(section));
-
-    const observer = new IntersectionObserver((entries) => { 
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('animate-fade-in-up');
-          console.log(entry.target)
-          console.log(entry.target.id);
-        setActiveSection(entry.target.id)
-        }
-        ;
-      });
-    }, {threshold: 0.3, rootMargin: '0px 0px 0px 0px' });
-
-    targets.forEach(el => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, []);
-
-  const toggleTheme = () => setIsDark((currentMode) => !currentMode);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      <Navbar activeSection={activeSection} />
-      <main className='max-w-4xl mx-auto px-6 sm:px-6 lg:px-16'>
-        <Intro />  {/* calling the intro component from the componetns folder */}
+    <BrowserRouter>
+      <RouteWrapper
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        theme={theme}
+        setTheme={setTheme}
+      />
+    </BrowserRouter>
+  );
+}
+
+/* ---------------------------------------------------
+   Wrapper adds behavior based on current URL
+---------------------------------------------------- */
+function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
+  const location = useLocation();
+
+  // Disable active underline on non-home pages
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveSection(""); // <-- fixes underline bug
+    }
+  }, [location.pathname]);
+
+  const isHome = location.pathname === "/";
+
+  return (
+    <>
+      {/* ⬇️ Show Navbar ONLY on home page */}
+      {isHome && (
+        <Navbar activeSection={activeSection} theme={theme} setTheme={setTheme} />
+      )}
+
+      <Routes>
+        {/* HOME */}
+        <Route
+          path="/"
+          element={
+            <HomePage
+              activeSection={activeSection}
+              setActiveSection={setActiveSection}
+            />
+          }
+        />
+
+        {/* PROJECT DETAILS */}
+        <Route
+          path="/project/:slug"
+          element={
+            <div className="min-h-screen pt-10 px-6">
+              <ProjectDetails />
+              <Footer />
+              <BackToTop />
+            </div>
+          }
+        />
+      </Routes>
+    </>
+  );
+}
+
+/* ------------------------------------
+   Home Page Component
+------------------------------------- */
+function HomePage({ activeSection, setActiveSection }) {
+  /* Scroll Spy ONLY on home page */
+  useEffect(() => {
+    const ids = ["intro", "projects", "contact"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { threshold: 0.55 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-animated text-foreground transition-colors">
+      <main className="max-w-5xl mx-auto px-6 pt-28 space-y-40">
+        <Intro />
         <Projects />
         <Contact />
-        <Footer toggleTheme={toggleTheme} isDark={isDark}/>
       </main>
 
-      <div className='fixed bottom-0 left-0 h-24 w-full bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none'></div>
+      <Footer />
+      <BackToTop />
     </div>
-    // <Router>
-    //   <Navbar />
-    //   <Routes>
-    //     <Route path='/' element={<Home />} />
-    //     <Route path='/about' element={<About />} />
-    //     <Route path='/contact' element={<Contact />} />
-
-    //     <Route path='/projects' element={<ProjectIndex />} />
-
-
-    //     <Route path='*' element={<PageNotFound />} />
-    //   </Routes>
-
-    //   <Navbar />
-
-    // </Router>
   );
 }
