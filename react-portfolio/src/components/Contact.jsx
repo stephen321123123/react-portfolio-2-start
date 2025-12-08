@@ -1,9 +1,22 @@
+import BlurText from "./animations/Blur";
+
+const handleAnimationComplete = () => {
+  console.log('Animation completed!');
+};
+
 export default function Contact() {
   return (
     <section id="contact" className="py-20 sm:py-32 opacity-0">
       <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 sm:gap-16">
         <div className="space-y-6 sm:space-y-8">
-          <h2 className="text-3xl sm:text-4xl font-light">Let's Connect</h2>
+          <BlurText
+            text="Lets Connect"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-4xl mb-8"
+          />
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
             Always interested in new opportunities, collaborations, and conversations about technology and design.
           </p>

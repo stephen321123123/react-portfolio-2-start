@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import projectsJSON from '@/assets/data/projects.json';
+import BlurText from "./animations/Blur";
+
+const handleAnimationComplete = () => {
+  console.log('Animation completed!');
+};
 
 export default function Project() {
   const [projects] = useState(projectsJSON);
@@ -9,7 +14,14 @@ export default function Project() {
       <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
         {/* Section header */}
         <div className="space-y-6 sm:space-y-8 lg:col-span-2 text-center lg:text-left">
-          <h2 className="text-4xl sm:text-5xl font-extralight text-slate-900">Projects</h2>
+          <BlurText
+            text="My Projects"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-4xl mb-8"
+          />
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Some of the projects I have worked on recently.
           </p>

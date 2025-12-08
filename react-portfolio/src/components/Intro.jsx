@@ -1,3 +1,10 @@
+import BlurText from "./animations/Blur";
+
+
+const handleAnimationComplete = () => {
+  console.log('Animation completed!');
+};
+
 export default function Intro() {
   return (
     <header id="intro" className="min-h-screen flex items-center px-8">
@@ -14,10 +21,14 @@ export default function Intro() {
 
         {/* MAIN TEXT */}
         <div className="md:col-span-2 space-y-5">
-          <h1 className="text-5xl tracking-tight font-light">
-            Stephen <br />
-            <span className="text-slate-500">Connolly</span>
-          </h1>
+          <BlurText
+            text="Stephen Connolly"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-4xl mb-8"
+          />
 
           <p className="text-slate-600 max-w-md">
             Frontend Developer passionate about merging
@@ -29,7 +40,7 @@ export default function Intro() {
           <div className="flex flex-wrap gap-4 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Available for work
+
             </div>
             <div>Ireland</div>
           </div>
