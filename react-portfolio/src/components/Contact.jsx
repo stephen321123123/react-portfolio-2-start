@@ -13,10 +13,8 @@ export default function Contact() {
 
       <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mt-10">
         {[
-          { name: "GitHub", url: "https://github.com/stephen321123123" },
-          { name: "LinkedIn", url: "https://linkedin.com/in/stephen-connolly-4260b41b7/" },
-          { name: "IADT", url: "https://iadt.ie/" },
-          { name: "HubSpot Community", url: "https://community.hubspot.com/" },
+          { name: "My GitHub Repositories!", url: "https://github.com/stephen321123123" },
+          { name: "Follow My LinkedIn!", url: "https://linkedin.com/in/stephen-connolly-4260b41b7/" },
         ].map((link) => (
           <a
             key={link.name}

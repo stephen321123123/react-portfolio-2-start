@@ -8,7 +8,9 @@ export default function Navbar({ activeSection }) {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-border bg-background/60">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="font-semibold text-lg">Stephen Connolly</div>
+        {/* Date and Time */}
+        {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+        
 
         <div className="flex gap-6 text-sm relative">
           {items.map((item) => (

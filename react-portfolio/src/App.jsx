@@ -117,9 +117,13 @@ function HomePage({ activeSection, setActiveSection }) {
     return () => observer.disconnect();
   }, []);
 
+  
   return (
-    <div className="min-h-screen bg-gradient-animated text-foreground transition-colors">
-      <main className="max-w-5xl mx-auto px-6 pt-28 space-y-40">
+    <div className="relative min-h-screen bg-gradient-animated text-foreground transition-colors overflow-hidden">
+      {/* Floating Shapes */}
+      <div className="bg-shapes absolute inset-0 pointer-events-none" />
+      
+      <main className="relative z-10 max-w-5xl mx-auto px-6 pt-28 space-y-40">
         <Intro />
         <Projects />
         <Contact />
