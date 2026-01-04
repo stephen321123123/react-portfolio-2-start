@@ -1,40 +1,60 @@
-import { Link } from "react-router-dom";
-import projects from "@/assets/data/projects.json";
+import { useState } from "react";
+import ProjectCard from "./ProjectCard"; // <-- Fixed import
+import projectsData from "../assets/data/projects.json";
+
+// ...existing code...
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  
+  // Show first 3 projects initially
+  const initialDisplay = 3;
+  const displayedProjects = showAll 
+    ? projectsData 
+    : projectsData.slice(0, initialDisplay);
+
   return (
-    <section id="projects" className="fade-up space-y-10">
-      <h2 className="text-4xl font-semibold text-center">Projects</h2>
+    <section id="projects" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-4xl font-bold mb-12 text-center">
+          My Projects
+        </h2>
+        
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayedProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map((project) => (
-          <Link
-            key={project.slug}
-            to={`/project/${project.slug}`}
-            className="block border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition bg-card"
-          >
-            <img
-              src={project.screenshots?.[0]?.url}
-              className="w-full h-48 object-cover"
-              alt={project.title}
-            />
-
-            <div className="p-5 space-y-3">
-              <h3 className="text-lg font-semibold">{project.title}</h3>
-              <p className="text-muted-foreground text-sm">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-2 py-1 text-xs rounded-md bg-secondary">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <span className="text-sm underline">View details →</span>
-            </div>
-          </Link>
-        ))}
+        {/* View More Button */}
+        {projectsData.length > initialDisplay && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg 
+                         hover:bg-primary/90 transition-all duration-300 
+                         flex items-center gap-2 mx-auto group"
+            >
+              {showAll ? "View Less" : "View More"}
+              <svg
+                className={`w-5 h-5 transition-transform duration-300 ${
+                  showAll ? "rotate-180" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
