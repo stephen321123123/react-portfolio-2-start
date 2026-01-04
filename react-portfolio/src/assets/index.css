@@ -244,3 +244,44 @@
   left: 5%;
   animation: float 15s ease-in-out infinite reverse;
 }
+
+
+/* Parallax Layers - More Visible */
+.parallax-slow {
+  transform: translateY(0);
+  transition: transform 0.1s ease-out;
+}
+
+.parallax-fast {
+  transform: translateY(0);
+  transition: transform 0.1s ease-out;
+}
+
+/* Apply parallax on scroll with JavaScript helper */
+@supports (transform-style: preserve-3d) {
+  .parallax-container {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer-back {
+    transform: translateZ(-3px) scale(4);
+  }
+
+  .parallax-layer-mid {
+    transform: translateZ(-1px) scale(2);
+  }
+
+  .parallax-layer-front {
+    transform: translateZ(0);
+  }
+}
