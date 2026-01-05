@@ -7,6 +7,7 @@ import Projects from "./components/Project";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import Aurora from "./components/animations/Aurora";
 
 import ProjectDetails from "./pages/ProjectDetails";
 
@@ -58,7 +59,17 @@ function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
   const isHome = location.pathname === "/";
 
   return (
-    <>
+    <div className="min-h-screen bg-background transition-colors">
+      {/* Aurora Background - Fixed across entire app */}
+      <div className="fixed inset-0 w-screen h-screen pointer-events-none z-0">
+        <Aurora
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.15}
+          amplitude={1.0}
+          speed={0.5}
+        />
+      </div>
+
       {/* ⬇️ Show Navbar ONLY on home page */}
       {isHome && (
         <Navbar activeSection={activeSection} theme={theme} setTheme={setTheme} />
@@ -80,7 +91,7 @@ function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
         <Route
           path="/project/:slug"
           element={
-            <div className="min-h-screen pt-10 px-6">
+            <div className="min-h-screen pt-10 px-6 relative z-10">
               <ProjectDetails />
               <Footer />
               <BackToTop />
@@ -88,7 +99,7 @@ function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 }
 
@@ -124,8 +135,8 @@ function HomePage({ activeSection, setActiveSection }) {
       <div className="bg-shapes absolute inset-0 pointer-events-none" />
       
       <main className="relative z-10 max-w-5xl mx-auto px-6 pt-28 space-y-40">
-        <Intro />
         <Projects />
+        <Intro />
         <Contact />
       </main>
 

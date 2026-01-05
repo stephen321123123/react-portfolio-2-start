@@ -7,8 +7,8 @@ export default function Contact() {
         Always open to new opportunities and collaborations.
       </p>
 
-      <a href="mailto:test@example.com" className="text-lg underline font-medium">
-        test@example.com
+      <a href="mailto:stephenconnolly911@gmail.com" className="text-lg underline font-medium">
+        stephenconnolly911@gmail.com
       </a>
 
       <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mt-10">

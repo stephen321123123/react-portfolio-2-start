@@ -10,7 +10,7 @@ export default function Intro() {
       />
 
       <BlurText
-        text="Stephen Connolly"
+        text="About Me"
         animateBy="words"
         delay={120}
         direction="top"
@@ -18,7 +18,7 @@ export default function Intro() {
       />
 
       <p className="text-lg text-muted-foreground max-w-xl">
-        Frontend Developer passionate about merging design, technology, and user-centered thinking.
+        I am a Frontend Developer who is passionate about design, technology, and delivering quality user experiences.
       </p>
 
       <div className="flex flex-wrap justify-center gap-3 mt-6 text-sm">
