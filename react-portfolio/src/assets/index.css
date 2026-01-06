@@ -24,7 +24,7 @@
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-F
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
@@ -97,9 +97,12 @@ F
 
 
 }
+
+
 .dark {
-  --background: oklch(0.1 0 0); /* dark background */
-  --foreground: oklch(0.98 0.01 265);
+  /* Keep same colors as light mode */
+  --background: oklch(1 0 0); /* white background */
+  --foreground: oklch(0.2 0.05 265);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.05 265);
@@ -131,14 +134,9 @@ F
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
+
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.6 0.25 280);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.01 270);
-  --sidebar-accent-foreground: oklch(0.2 0.05 265);
-  --sidebar-border: oklch(0.9 0.01 270);
-  --sidebar-ring: oklch(0.6 0.25 280);
 }
 
 @layer base {

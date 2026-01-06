@@ -5,7 +5,7 @@ import projectsData from "../assets/data/projects.json";
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   
-  const initialDisplay = 3;
+  const initialDisplay = 2;
   const displayedProjects = showAll 
     ? projectsData 
     : projectsData.slice(0, initialDisplay);
@@ -13,14 +13,18 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 relative -mx-6 md:-mx-0">
       <div className="fixed inset-0 w-screen h-screen pointer-events-none z-0">
+
       </div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          My Projects
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-bold mb-3">
+            Projects
+          </h2>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {displayedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

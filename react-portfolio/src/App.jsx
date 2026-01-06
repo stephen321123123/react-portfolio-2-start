@@ -15,9 +15,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("");
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
 
-  /* ---------------------------
-     Theme Handling
-  ---------------------------- */
   useEffect(() => {
     const root = document.documentElement;
 
@@ -43,34 +40,49 @@ export default function App() {
   );
 }
 
-/* ---------------------------------------------------
-   Wrapper adds behavior based on current URL
----------------------------------------------------- */
 function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
   const location = useLocation();
+  const [isDark, setIsDark] = useState(false);
 
   // Disable active underline on non-home pages
   useEffect(() => {
     if (location.pathname !== "/") {
-      setActiveSection(""); // <-- fixes underline bug
+      setActiveSection("");
     }
   }, [location.pathname]);
+
+  // Watch for dark mode changes
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    
+    checkDarkMode(); // Initial check
+    
+    // Watch for class changes on html element
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
+  }, [theme]);
 
   const isHome = location.pathname === "/";
 
   return (
     <div className="min-h-screen bg-background transition-colors">
-      {/* Aurora Background - Fixed across entire app */}
       <div className="fixed inset-0 w-screen h-screen pointer-events-none z-0">
         <Aurora
-          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          colorStops={isDark ? ["#1a0f3d", "#3d1a4d", "#0f1a3d"] : ["#3A29FF", "#FF94B4", "#FF3232"]}
           blend={0.15}
           amplitude={1.0}
           speed={0.5}
         />
       </div>
 
-      {/* ⬇️ Show Navbar ONLY on home page */}
+
       {isHome && (
         <Navbar activeSection={activeSection} theme={theme} setTheme={setTheme} />
       )}
@@ -103,9 +115,6 @@ function RouteWrapper({ activeSection, setActiveSection, theme, setTheme }) {
   );
 }
 
-/* ------------------------------------
-   Home Page Component
-------------------------------------- */
 function HomePage({ activeSection, setActiveSection }) {
   /* Scroll Spy ONLY on home page */
   useEffect(() => {

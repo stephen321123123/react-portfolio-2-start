@@ -4,7 +4,7 @@ export default function Intro() {
   return (
     <section id="intro" className="fade-up text-center flex flex-col items-center justify-center">
       <img
-        src="/src/assets/images/picture.jpg"
+        src="/src/assets/images/my_image.jpeg"
         alt="Stephen Connolly"
         className="w-40 h-40 rounded-xl object-cover shadow-md mb-6"
       />

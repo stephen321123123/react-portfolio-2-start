@@ -20,7 +20,7 @@ export default function ProjectDetails() {
       <div className="max-w-4xl mx-auto mb-6">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition"
+          className="inline-flex items-center gap-2 text-white hover:text-white/80 transition"
         >
           <span className="text-xl">←</span>
           <span className="text-sm">Back to Home</span>
@@ -32,7 +32,7 @@ export default function ProjectDetails() {
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
           {project.title}
         </h1>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-white text-lg">
           {project.description}
         </p>
       </header>
