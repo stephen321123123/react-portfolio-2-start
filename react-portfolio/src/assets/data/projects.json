@@ -28,50 +28,5 @@
         "github": "",
         "date": "2025",
         "tags": ["React", "JavaScript", "CSS", "+1"]
-    },
-    {
-        "slug": "portfolio-website",
-        "title": "Portfolio Website",
-        "description": "A personal portfolio website to showcase projects and skills.",
-        "screenshots": [
-            {
-                "url": "https://picsum.photos/seed/portfoliowebsite/600/400",
-                "caption": "Screenshot of Portfolio Website"
-            }
-        ],
-        "url": "https://example.com/portfolio-website",
-        "github": "",
-        "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "+1"]
-    },
-    {
-        "slug": "weather-app",
-        "title": "Weather App",
-        "description": "A weather forecasting application that provides current weather data.",
-        "screenshots": [
-            {
-                "url": "https://picsum.photos/seed/weatherapp/600/400",
-                "caption": "Screenshot of Weather App"
-            }
-        ],
-        "url": "https://example.com/weather-app",
-        "github": "",
-        "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "+1"]
-    },
-    {
-        "slug": "task-manager",
-        "title": "Task Manager",
-        "description": "A task management application to organize and track tasks.",
-        "screenshots": [
-            {
-                "url": "https://picsum.photos/seed/taskmanager/600/400",
-                "caption": "Screenshot of Task Manager"
-            }
-        ],
-        "url": "https://example.com/task-manager",
-        "github": "",
-        "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "+1"]
     }
 ]
