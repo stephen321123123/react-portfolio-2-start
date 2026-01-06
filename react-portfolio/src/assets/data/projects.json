@@ -1,12 +1,11 @@
 [
-    
     {
         "slug": "blog-platform",
         "title": "Maze - UE5",
         "description": "A game created using UE5 where players navigate through a maze.",
         "screenshots": [
             {
-                "url": "/public/maze.png",
+                "url": "/maze.png",
                 "caption": "Screenshot of Maze - UE5"
             }
         ],
@@ -16,20 +15,20 @@
         "tags": ["Unreal Engine 5", "C++", "Game Development"]
     },
     {
-  "slug": "react-countries-site",
-  "title": "React Countries Site",
-  "description": "A React built website that displays information about different countries.",
-  "screenshots": [
-    {
-      "url": "/public/ireland.png",
-      "caption": "Screenshot of Ireland project"
-    }
-  ],
-  "url": "https://restcountriescastephenconnolly.web.app",
-  "github": "",
-  "date": "2025",
-  "tags": ["React", "JavaScript", "CSS", "HTML"]
-},
+        "slug": "react-countries-site",
+        "title": "React Countries Site",
+        "description": "A React built website that displays information about different countries.",
+        "screenshots": [
+            {
+                "url": "/ireland.png",
+                "caption": "Screenshot of React Countries Site"
+            }
+        ],
+        "url": "https://restcountriescastephenconnolly.web.app",
+        "github": "",
+        "date": "2025",
+        "tags": ["React", "JavaScript", "CSS", "+1"]
+    },
     {
         "slug": "portfolio-website",
         "title": "Portfolio Website",
@@ -43,7 +42,7 @@
         "url": "https://example.com/portfolio-website",
         "github": "",
         "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "HTML"]
+        "tags": ["React", "JavaScript", "CSS", "+1"]
     },
     {
         "slug": "weather-app",
@@ -58,7 +57,7 @@
         "url": "https://example.com/weather-app",
         "github": "",
         "date": "2025",
-        "tags": ["React", "JavaScript", "CSS", "HTML"]
+        "tags": ["React", "JavaScript", "CSS", "+1"]
     },
     {
         "slug": "task-manager",
@@ -73,6 +72,6 @@
         "url": "https://example.com/task-manager",
         "github": "",
         "date": "2025",
-        "tags": ["React", "TypeScript", "CSS", "HTML"]
+        "tags": ["React", "JavaScript", "CSS", "+1"]
     }
 ]
